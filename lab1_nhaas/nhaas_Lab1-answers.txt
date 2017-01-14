@@ -1,0 +1,44 @@
+#Nikki Haas
+#w205, Lab 1
+#
+
+ssh -i nhaas_wk_1_lab.pem root@ec2-54-164-41-21.compute-1.amazonaws.com
+
+#1- 1-Provide a screenshot of the running UCB AMI that shows you have successfully  #launched an EC2 instance using the UCB AMI.
+
+#Please see included jpg entitled "nhaas_wk_1_ami_box.jpg"
+
+#2- Provide the answers to the following questions in a file called Lab1-answers.txt
+#Q1: What is the difference between EBS and S3?
+
+#  Both are storage option for AWS.  S3 stands for Simple Storage Service and is for Big  
+# Data, you'd want S3 storage if you had terabytes of data. In addition, S3 is more like a 
+# service, and can be accessed using RESTful API. It appears to also be distributed       
+# storage (https://console.aws.amazon.com/s3/home?region=us-east-1#)
+#  EBS is a persistent storage option for AWS.  It stands for Elastic Block Store and     
+# mirrors the traditional storage you would have on a physical machine
+# (https://aws.amazon.com/ebs/?tag=cnet-viglink-20)
+#
+
+#Q2: When would you consider a cloud infrastructure for your data science tasks?
+
+# Could infrastructure would be ideal when my tasks involve medium-big size datasets
+# and when cost is a factor.  I certainly can't afford my own servers and nodes.  
+# They'd also be pretty handy if I needed to collaborate with others so we could all log in.
+# I would not use cloud infrastructure when security is a consideration, such as if I were
+# to deal with information protected under HIPAA or PII laws.
+
+#Q3: What is the difference between spot instances and reserved instances?
+
+#  Spot instances would be when I would need to spin up a virtual machine or server as needed.
+#  Our R&D department at work is trying out a PrestoDB instance that we just spin up as we need
+#  to see if it is cost effective.  (So far, it's is losing to Spark, so it probably won't go forward)
+#  A reserved instance would be a vm that always exists.
+
+
+# Q4: List the names of four software packages installed on the UCB AMI.
+
+# Python 2.6
+# Hadoop
+# Linux
+# Apache Storm 
