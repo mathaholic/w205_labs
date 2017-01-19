@@ -1,0 +1,40 @@
+w205_week_2_lab
+
+Submissions:
+
+-- instance name: ec2-54-84-68-167.compute-1.amazonaws.com
+
+-- EBS volume name: Disk /dev/xvdf: 1099.5 GB
+
+1.List the HDFS contents of /user
+
+[w205@ip-172-31-3-47 ~]$ hdfs dfs -ls /user
+Found 8 items
+drwxr-xr-x   - mapred  supergroup          0 2017-01-18 23:52 /user/history
+drwxrwxrwx   - hive    supergroup          0 2017-01-18 23:53 /user/hive
+drwxrwxrwx   - hue     supergroup          0 2017-01-18 23:54 /user/hue
+drwxrwxrwx   - jenkins supergroup          0 2017-01-18 23:53 /user/jenkins
+drwxrwxrwx   - oozie   supergroup          0 2017-01-18 23:54 /user/oozie
+drwxrwxrwx   - root    supergroup          0 2017-01-18 23:53 /user/root
+drwxr-xr-x   - hdfs    supergroup          0 2017-01-18 23:57 /user/spark
+drwxr-xr-x   - w205    supergroup          0 2017-01-19 00:04 /user/w205
+
+
+2.Inspect the output of the HDFS admin report and answer the following questions in a text file.
+
+	-To generate this, exit from the w205 user and type: sudo -u hdfs hdfs dfsadmin -report
+
+Q1: How many live datanodes are there?
+
+	Live datanodes (1):
+
+	Name: 127.0.0.1:50010 (localhost)
+
+Q2: How much non-DFS storage is used?
+
+	Non DFS Used: 5421469696 (5.05 GB)
+
+Q3: How much DFS storage is used?
+
+	DFS Used: 144056320 (137.38 MB)
+	DFS Used%: 1.36%
