@@ -48,9 +48,9 @@ SELECT
 u.location,
 count(u.location) loc_count
 from 
-weblogs_parquet w
-join
 user_info u
+join
+weblogs_parquet w
 on w.user_id = u.user_id
 GROUP BY u.location
 ORDER BY loc_count DESC
