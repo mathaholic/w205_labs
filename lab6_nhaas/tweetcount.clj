@@ -1,4 +1,4 @@
-(ns tweetcount
+(ns wordcount
     (:use     [streamparse.specs])
     (:gen-class))
 
@@ -8,7 +8,7 @@
     {"X-spout" (python-spout-spec
         options
         "spouts.sentences.Sentences"
-        [sentence]
+        ["sentence"]
         )
     }
     ;; Bolts
@@ -27,7 +27,7 @@
         {"TweetCounter" (python-bolt-spec
           options
           {"Sentences" :shuffle}
-          "bolts.tweetcounter.TweetCounter"
+          "bolts.wordcount.TweetCounter"
           ["word", "count"]
           :p 1
           ;; only need 1 bolt
