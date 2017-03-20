@@ -1,0 +1,82 @@
+#w205 lab 8
+#by Nikki Haas
+
+Step 1:
+
+Submission 1
+How many rows are missing a value in the "State" column? Explain how you came up with the number.
+
+There are 5377 rows missing the "State" column.  You can see this easily using the state facets by scrolling to the bottom of the list and seeing there are 5377 rows with a "(blank)" state.
+
+SUBMISSION 2:
+How many rows with missing ZIP codes do you have?
+I have 4362 rows with missing zip codes.
+
+SUBMISSION 3:
+If you consider all ZIP codes less than 99999 to be valid, how many valid and invalid ZIP codes do you have, respectively?
+
+I have 39323 invalid zip codes (either 99999 or blank), and 345175 valid zip codes.
+
+
+Step 2:
+
+"nst
+Data Type
+Integer
+Description
+The total number of seismic stations used to determine earthquake location.
+Additional Information
+Number of seismic stations which reported P- and S-arrival times for this earthquake. This number may be larger than the Number of Phases Used if arrival times are rejected because the distance to a seismic station exceeds the maximum allowable distance or because the arrival-time observation is inconsistent with the solution."
+
+
+
+SUBMISSION 4:
+Change the radius to 3.0. What happens? Do you want to merge any of the resulting matches?
+
+
+Changing the radius brought up Canada, California, and a few others. I went ahead and merged them all, but I noted that Uganda came up with Canada in error.
+
+
+SUBMISSION 5:
+Change the block size to 2. Give two examples of new clusters that may be worth merging.
+
+It brought up more misspells of Alaska and California that were worth merging.  I did not merge Chile and China.
+
+
+SUBMISSION 6:
+Explain in words what happens when you cluster the "place" column, and why you think that happened. What additional functionality could OpenRefine provide to possibly deal with the situation?
+Hint: you may want to cancel the run.
+
+I see a lot of values that look like 101 km off the coast of Japan, 102 km off the coast of Japan, etc.  I think I would like to cluster these in ranges.  So, I could make ranges that are 1-50 km off the coast of Japan, 51-100 km off the coast of Japan, etc.  Allowing us to manually remove an element from a clustering suggestion would also be pretty fantastic.
+
+Step 3: Levenshtein Dist
+
+SUBMISSION 7:
+Submit a representation of the resulting matrix from the Levenshtein edit distance calculation. The resulting value should be correct.
+
+[1, 0, 1, 2, 3, 4, 5, 6, 7, 8]
+[2, 1, 0, 1, 2, 3, 4, 5, 6, 7]
+[3, 2, 1, 1, 2, 3, 4, 5, 6, 7]
+[4, 3, 2, 2, 1, 2, 3, 4, 5, 6]
+[5, 4, 3, 3, 2, 1, 2, 3, 4, 5]
+[6, 5, 4, 4, 3, 2, 1, 2, 3, 4]
+[7, 6, 5, 5, 4, 3, 2, 2, 2, 3]
+[8, 7, 6, 6, 5, 4, 3, 3, 3, 2]
+[9, 8, 7, 7, 6, 5, 4, 4, 4, 3]
+
+used this code, because my brain was moosh
+def levenshteinDistance(s1, s2):
+	if len(s1) > len(s2):
+    	s1, s2 = s2, s1
+
+	distances = range(len(s1) + 1)
+	for i2, c2 in enumerate(s2):
+    	distances_ = [i2+1]
+    	for i1, c1 in enumerate(s1):
+        	if c1 == c2:
+            	distances_.append(distances[i1])
+        	else:
+            	distances_.append(1 + min((distances[i1], distances[i1 + 1], distances_[-1])))
+    	distances = distances_
+    	print(distances)
+	return distances
